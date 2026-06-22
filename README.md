@@ -216,10 +216,6 @@ metadata:
 ```
 
 **Demo talking points:**
-- Deploy resources in dependency order
-- Database before application
-- Network policies before services
-- Eliminates race conditions
 
 ### 9. **Three-Way Diff**
 Compare states:
