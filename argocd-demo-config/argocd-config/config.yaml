@@ -1,0 +1,40 @@
+---
+# This is a simplified ArgoCD installation manifests snippet.
+# For production, use official Kustomize or Helm installation.
+# Download from: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# NOTE: For this demo, we'll use:
+# kubectl create namespace argocd
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# The above command installs all ArgoCD components including:
+# - argocd-server
+# - argocd-application-controller
+# - argocd-dex-server
+# - argocd-repo-server
+# - argocd-notifications-controller
+
+# Manual configuration can be done via argocd-cmd-params-cm ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  # Server configuration
+  application.instanceLabelKey: argocd.argoproj.io/instance
+  
+  # Enable insecure mode for demo (not for production)
+  server.insecure: "false"
+  
+  # Configure repository server
+  reposerver.parallelism.limit: "10"
+  
+  # Enable webhook support
+  url: http://argocd-server
+  
+  # Project defaults
+  project.roles.default.policies: |
+    p, proj:default:default, applications, get, default/*, allow
+    p, proj:default:default, applications, sync, default/*, allow
+    p, proj:default:default, repositories, get, *, allow

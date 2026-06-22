@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-demo-canary
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/your-username/argocd-demo-app
+    targetRevision: main
+    path: k8s/canary
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-demo-canary
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    
+    # Progressive delivery with ArgoCD + Rollouts
+    automated:
+      prune: false        # Manual pruning for safety
+      selfHeal: false
+      allow:
+        empty: false
+
+  # Sync waves for ordered deployments
+  # Uncomment when k8s/canary includes sync wave annotations:
+  # metadata:
+  #   annotations:
+  #     argocd.argoproj.io/sync-wave: "0"

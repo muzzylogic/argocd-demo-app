@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-demo-app
+  namespace: argocd
+spec:
+  # ArgoCD project
+  project: default
+
+  # Source repository configuration
+  source:
+    repoURL: https://github.com/your-username/argocd-demo-app
+    targetRevision: main
+    path: k8s
+
+  # Destination cluster and namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-demo
+
+  # Sync policy - MANUAL SYNC for initial demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    
+    # Uncomment for AUTO SYNC (feature demo)
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    #   allow:
+    #     empty: false
+    
+    # Retry configuration
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+
+  # Ignore differences (optional)
+  # ignoreDifferences:
+  # - group: apps
+  #   kind: Deployment
+  #   jsonPointers:
+  #   - /spec/replicas
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-demo-app-auto-sync
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/your-username/argocd-demo-app
+    targetRevision: main
+    path: k8s
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-demo-auto
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    
+    # AUTO SYNC ENABLED - demonstrates automatic GitOps
+    automated:
+      prune: true        # Delete resources removed from git
+      selfHeal: true     # Reconcile if cluster state drifts
+      allow:
+        empty: false     # Prevent deleting all resources
+
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
