@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: your-registry/argocd-demo-backend:1.0.0
+        image: argocd-demo-backend:1.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3001
