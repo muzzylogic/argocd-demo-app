@@ -6,7 +6,7 @@ This guide covers advanced features for your ArgoCD demo:
 - Custom hostname access (demo.argocd instead of localhost)
 - CI/CD integration strategies
 
-## 📡 Part 1: ArgoCD Git Watching
+##  Part 1: ArgoCD Git Watching
 
 ### How ArgoCD Watches Git
 
@@ -14,9 +14,9 @@ ArgoCD can watch **any Git repository** - GitHub, GitLab, self-hosted, local rep
 
 #### Option A: Polling (Default - Simple)
 ```
-✅ No setup needed
-✅ ArgoCD checks git every 3 minutes
-⏱️ Delay: ~3 minutes until sync
+ No setup needed
+ ArgoCD checks git every 3 minutes
+ Delay: ~3 minutes until sync
 ```
 
 **Demo workflow:**
@@ -38,9 +38,9 @@ watch kubectl get pods -n argocd-demo
 
 #### Option B: GitHub Webhook (Fast)
 ```
-✅ Instant sync on push
-⏱️ Delay: <1 second
-⚙️ Requires webhook configuration
+ Instant sync on push
+ Delay: <1 second
+ Requires webhook configuration
 ```
 
 **Setup steps:**
@@ -88,7 +88,7 @@ argocd repo add git@your-git-server:user/argocd-demo-app.git \
 
 ---
 
-## 🎬 Part 2: Multi-Scenario Image Variants
+##  Part 2: Multi-Scenario Image Variants
 
 ### Pre-Build Multiple Image Versions
 
@@ -102,9 +102,9 @@ This creates:
 
 | Version | Status | Health Check | Response | Use Case |
 |---------|--------|--------------|----------|----------|
-| **1.0.0** | ✅ Working | PASS | Fast (50ms) | Normal operation |
-| **1.0.1** | ❌ Broken | FAIL | 500 errors | Show failure recovery |
-| **1.0.2** | 🟡 Degraded | PASS (slow) | Slow (5s) | Show performance issue |
+| **1.0.0** |  Working | PASS | Fast (50ms) | Normal operation |
+| **1.0.1** |  Broken | FAIL | 500 errors | Show failure recovery |
+| **1.0.2** |  Degraded | PASS (slow) | Slow (5s) | Show performance issue |
 
 ### Demo Scenario 1: Failure & Recovery
 
@@ -200,7 +200,7 @@ argocd app sync argocd-demo-app
 
 ---
 
-## 🌐 Part 3: Custom Hostname (demo.argocd)
+##  Part 3: Custom Hostname (demo.argocd)
 
 ### Why Use Custom Hostname?
 
@@ -304,7 +304,7 @@ http://localhost
 
 ---
 
-## 🔄 Part 4: CI/CD Integration Strategy
+##  Part 4: CI/CD Integration Strategy
 
 ### Option A: No CI/CD (Simplest)
 
@@ -402,7 +402,7 @@ git push
 
 ---
 
-## 🎯 Complete Demo Flow with All Features
+##  Complete Demo Flow with All Features
 
 ### Pre-Demo Setup (15 min)
 ```bash
@@ -494,16 +494,16 @@ argocd app sync argocd-demo-app
 **Part 4: Q&A**
 ```
 Key messages:
-✅ Git is source of truth
-✅ Instant rollback capability
-✅ Prevents configuration drift
-✅ Works across multiple clusters
-✅ Complete audit trail
+ Git is source of truth
+ Instant rollback capability
+ Prevents configuration drift
+ Works across multiple clusters
+ Complete audit trail
 ```
 
 ---
 
-## 📋 Scripts Reference
+##  Scripts Reference
 
 | Script | Purpose | Time |
 |--------|---------|------|
@@ -517,7 +517,7 @@ Key messages:
 
 ---
 
-## 🎤 Sales Pitch (Updated)
+##  Sales Pitch (Updated)
 
 > "Let me show you how to deploy safely and recover from failures in seconds."
 
@@ -547,4 +547,4 @@ Key messages:
 
 ---
 
-Good luck with your demo! 🚀
+Good luck with your demo! 

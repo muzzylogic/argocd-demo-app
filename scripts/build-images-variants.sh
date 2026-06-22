@@ -18,7 +18,7 @@ echo -e "${BLUE}Building multiple image versions for demo scenarios...${NC}\n"
 # Setup Minikube Docker environment
 echo "Setting up Docker environment for Minikube..."
 eval $(minikube docker-env)
-echo -e "${GREEN}✓ Docker environment configured${NC}\n"
+echo -e "${GREEN} Docker environment configured${NC}\n"
 
 # Get project root
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -46,7 +46,7 @@ app.get('/health', (req, res) => {
 // API endpoint that returns data
 app.get('/api/message', (req, res) => {
   res.json({
-    message: '✅ Backend is working normally!',
+    message: ' Backend is working normally!',
     version: '1.0.0',
     environment: 'production',
     status: 'healthy',
@@ -66,7 +66,7 @@ app.get('/api/status', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`✅ Backend 1.0.0 running on port ${PORT}`);
+  console.log(` Backend 1.0.0 running on port ${PORT}`);
 });
 BACKEND_EOF
 
@@ -74,7 +74,7 @@ docker build -f "$PROJECT_ROOT/argocd-demo-app/docker/backend.Dockerfile" \
   -t argocd-demo-backend:1.0.0 \
   "$PROJECT_ROOT/argocd-demo-app"
 
-echo -e "${GREEN}✓ Backend 1.0.0 built${NC}\n"
+echo -e "${GREEN} Backend 1.0.0 built${NC}\n"
 
 # ============================================================================
 # Version 1.0.1 - BROKEN VERSION (Simulate crash)
@@ -102,7 +102,7 @@ app.get('/health', (req, res) => {
 // API endpoint - Returns error
 app.get('/api/message', (req, res) => {
   res.status(500).json({
-    error: '❌ Backend service is DOWN',
+    error: ' Backend service is DOWN',
     version: '1.0.1',
     message: 'Database connection failed',
     status: 'error'
@@ -120,8 +120,8 @@ app.get('/api/status', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`❌ Backend 1.0.1 BROKEN VERSION running on port ${PORT}`);
-  console.log('⚠️  This version fails health checks');
+  console.log(` Backend 1.0.1 BROKEN VERSION running on port ${PORT}`);
+  console.log('  This version fails health checks');
 });
 BACKEND_BROKEN_EOF
 
@@ -155,7 +155,7 @@ docker build -f "$PROJECT_ROOT/argocd-demo-app/docker/backend-broken.Dockerfile"
   -t argocd-demo-backend:1.0.1 \
   "$PROJECT_ROOT/argocd-demo-app"
 
-echo -e "${GREEN}✓ Backend 1.0.1 (Broken) built${NC}\n"
+echo -e "${GREEN} Backend 1.0.1 (Broken) built${NC}\n"
 
 # ============================================================================
 # Version 1.0.2 - DEGRADED VERSION (Slow responses)
@@ -182,7 +182,7 @@ app.get('/health', (req, res) => {
 app.get('/api/message', (req, res) => {
   setTimeout(() => {
     res.json({
-      message: '🐢 Backend responding slowly (performance issue)',
+      message: ' Backend responding slowly (performance issue)',
       version: '1.0.2',
       environment: 'production',
       status: 'degraded',
@@ -208,8 +208,8 @@ app.get('/api/status', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`⚠️  Backend 1.0.2 DEGRADED VERSION running on port ${PORT}`);
-  console.log('🐢 Simulating slow responses');
+  console.log(`  Backend 1.0.2 DEGRADED VERSION running on port ${PORT}`);
+  console.log(' Simulating slow responses');
 });
 BACKEND_DEGRADED_EOF
 
@@ -243,14 +243,14 @@ docker build -f "$PROJECT_ROOT/argocd-demo-app/docker/backend-degraded.Dockerfil
   -t argocd-demo-backend:1.0.2 \
   "$PROJECT_ROOT/argocd-demo-app"
 
-echo -e "${GREEN}✓ Backend 1.0.2 (Degraded) built${NC}\n"
+echo -e "${GREEN} Backend 1.0.2 (Degraded) built${NC}\n"
 
 # ============================================================================
 # Summary
 # ============================================================================
-echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${GREEN}✓ All image versions built successfully!${NC}"
-echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+echo -e "${BLUE}${NC}"
+echo -e "${GREEN} All image versions built successfully!${NC}"
+echo -e "${BLUE}${NC}\n"
 
 echo -e "${GREEN}Available images:${NC}\n"
 docker images | grep argocd-demo-backend
@@ -258,14 +258,14 @@ docker images | grep argocd-demo-backend
 echo ""
 echo -e "${YELLOW}Demo Scenarios:${NC}\n"
 
-echo "🟢 WORKING VERSION (1.0.0)"
+echo " WORKING VERSION (1.0.0)"
 echo "  - Health checks pass"
 echo "  - Fast responses"
 echo "  - All endpoints work normally"
 echo "  - Use: kubectl set image deployment/backend backend=argocd-demo-backend:1.0.0"
 echo ""
 
-echo "🔴 BROKEN VERSION (1.0.1)"
+echo " BROKEN VERSION (1.0.1)"
 echo "  - Health checks FAIL"
 echo "  - Returns 500 errors"
 echo "  - Pods will CrashLoopBackOff"
@@ -273,7 +273,7 @@ echo "  - DEMO: Show pods crashing, then rollback"
 echo "  - Use: kubectl set image deployment/backend backend=argocd-demo-backend:1.0.1"
 echo ""
 
-echo "🟡 DEGRADED VERSION (1.0.2)"
+echo " DEGRADED VERSION (1.0.2)"
 echo "  - Health checks pass (slowly)"
 echo "  - Extremely slow responses (5-10 seconds)"
 echo "  - Health shows as degraded"

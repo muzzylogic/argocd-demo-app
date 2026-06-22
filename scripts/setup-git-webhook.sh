@@ -71,9 +71,9 @@ echo "     --ssh-private-key-path ~/.ssh/argocd-repo"
 echo ""
 
 echo -e "${BLUE}For this demo:${NC}"
-echo "✅ We'll use polling (simple, no webhook needed)"
-echo "✅ ArgoCD checks git every 3 minutes"
-echo "✅ Or manually sync with: argocd app sync argocd-demo-app"
+echo " We'll use polling (simple, no webhook needed)"
+echo " ArgoCD checks git every 3 minutes"
+echo " Or manually sync with: argocd app sync argocd-demo-app"
 echo ""
 
 echo -e "${YELLOW}Pro Tip for faster sync:${NC}"

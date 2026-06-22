@@ -18,9 +18,9 @@ pause() {
 }
 
 header() {
-    echo -e "\n${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "\n${BLUE}${NC}"
     echo -e "${BLUE}$1${NC}"
-    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+    echo -e "${BLUE}${NC}\n"
 }
 
 subheader() {
@@ -28,7 +28,7 @@ subheader() {
 }
 
 success() {
-    echo -e "${GREEN}✓ $1${NC}"
+    echo -e "${GREEN} $1${NC}"
 }
 
 info() {
@@ -36,11 +36,11 @@ info() {
 }
 
 echo -e "${BLUE}"
-echo "╔════════════════════════════════════════════════════╗"
-echo "║     ArgoCD Product Demo - Interactive Tour         ║"
-echo "║                                                    ║"
-echo "║  Demonstrating GitOps Continuous Deployment       ║"
-echo "╚════════════════════════════════════════════════════╝"
+echo ""
+echo "     ArgoCD Product Demo - Interactive Tour         "
+echo "                                                    "
+echo "  Demonstrating GitOps Continuous Deployment       "
+echo ""
 echo -e "${NC}"
 
 # Feature 1: Application Sync Status
@@ -136,21 +136,21 @@ subheader "Deploy to multiple environments from same repo"
 
 info "Example structure:"
 echo "argocd-demo-app/"
-echo "├── k8s/"
-echo "│   ├── base/              # Common configs"
-echo "│   ├── overlays/"
-echo "│   │   ├── dev/"
-echo "│   │   ├── staging/"
-echo "│   │   └── prod/          # Kustomize overlays"
-echo "│   └── values-{env}.yaml  # Helm values per env"
+echo " k8s/"
+echo "    base/              # Common configs"
+echo "    overlays/"
+echo "       dev/"
+echo "       staging/"
+echo "       prod/          # Kustomize overlays"
+echo "    values-{env}.yaml  # Helm values per env"
 pause
 
 subheader "Creating environment-specific applications"
 info "Each environment has its own Application resource:"
 echo "argocd-demo-config/"
-echo "├── applications/app-dev.yaml"
-echo "├── applications/app-staging.yaml"
-echo "└── applications/app-prod.yaml"
+echo " applications/app-dev.yaml"
+echo " applications/app-staging.yaml"
+echo " applications/app-prod.yaml"
 pause
 
 # Feature 8: Sync Waves
@@ -218,22 +218,22 @@ pause
 header "Demo Summary"
 
 echo -e "${GREEN}Key Benefits of ArgoCD:${NC}\n"
-echo "✓ Git as single source of truth"
-echo "✓ Automated, consistent deployments"
-echo "✓ Audit trail (all changes in Git)"
-echo "✓ Easy rollback capability"
-echo "✓ Multi-environment management"
-echo "✓ Declarative configuration"
-echo "✓ Real-time status visibility"
-echo "✓ Progressive delivery patterns"
+echo " Git as single source of truth"
+echo " Automated, consistent deployments"
+echo " Audit trail (all changes in Git)"
+echo " Easy rollback capability"
+echo " Multi-environment management"
+echo " Declarative configuration"
+echo " Real-time status visibility"
+echo " Progressive delivery patterns"
 echo ""
 
 echo -e "${GREEN}Use Cases:${NC}\n"
-echo "✓ Continuous deployment pipelines"
-echo "✓ Multi-cloud/cluster management"
-echo "✓ Disaster recovery"
-echo "✓ Compliance & audit"
-echo "✓ Developer self-service"
+echo " Continuous deployment pipelines"
+echo " Multi-cloud/cluster management"
+echo " Disaster recovery"
+echo " Compliance & audit"
+echo " Developer self-service"
 echo ""
 
 echo -e "${GREEN}Next Steps:${NC}\n"
@@ -251,4 +251,4 @@ echo "4. Modify git and see auto-sync:"
 echo "   Edit k8s/frontend.yaml → push → watch sync"
 echo ""
 
-echo -e "${BLUE}Thank you for exploring ArgoCD! 🚀${NC}\n"
+echo -e "${BLUE}Thank you for exploring ArgoCD! ${NC}\n"

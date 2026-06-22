@@ -1,6 +1,6 @@
 # ArgoCD Demo - Quick Start Guide
 
-## 🚀 Get Started in 10 Minutes
+##  Get Started in 10 Minutes
 
 ### Step 1: Initial Setup (5 minutes)
 ```bash
@@ -11,10 +11,10 @@ cd /home/vitas/dev/airflow_demo
 ```
 
 This will:
-- ✅ Start Minikube
-- ✅ Install ArgoCD
-- ✅ Create demo namespaces
-- ✅ Print ArgoCD login credentials
+-  Start Minikube
+-  Install ArgoCD
+-  Create demo namespaces
+-  Print ArgoCD login credentials
 
 ### Step 2: Build Container Images (3 minutes)
 ```bash
@@ -47,7 +47,7 @@ kubectl port-forward -n argocd-demo svc/frontend 3000:80 &
 # Access app at http://localhost:3000
 ```
 
-## 📊 Running the Interactive Demo
+##  Running the Interactive Demo
 
 ```bash
 ./scripts/demo.sh
@@ -68,7 +68,7 @@ This guide walks through 12 key ArgoCD features:
 11. **Notifications** - Integration with external systems
 12. **RBAC & Security** - Enterprise access control
 
-## 🎯 Key Demo Scenarios
+##  Key Demo Scenarios
 
 ### Scenario 1: Show Git-Driven Deployments
 ```bash
@@ -84,7 +84,7 @@ git push
 # Manually sync (or auto-sync will do it)
 argocd app sync argocd-demo-app
 
-# 👉 Show how change appears in cluster
+#  Show how change appears in cluster
 kubectl get deployment -n argocd-demo
 ```
 
@@ -102,7 +102,7 @@ argocd app get argocd-demo-app
 # Sync to fix it
 argocd app sync argocd-demo-app
 
-# 👉 Show drift is resolved
+#  Show drift is resolved
 kubectl get deployment -n argocd-demo
 ```
 
@@ -120,7 +120,7 @@ kubectl set env deployment frontend -n argocd-demo BAD_VAR=true --record
 # Rollback with one command:
 argocd app rollback argocd-demo-app 0
 
-# 👉 Show it's instantly fixed
+#  Show it's instantly fixed
 kubectl get deployment -n argocd-demo
 ```
 
@@ -137,7 +137,7 @@ kubectl get app -n argocd -o wide
 
 **Talking point:** "Manage deployments across multiple Kubernetes clusters from one place."
 
-## 📋 Useful Commands Reference
+##  Useful Commands Reference
 
 ```bash
 # View all applications
@@ -169,7 +169,7 @@ kubectl logs -n argocd-demo -l app=backend
 kubectl logs -n argocd-demo -l app=frontend
 ```
 
-## 🎨 Customization
+##  Customization
 
 ### Update Git Repository URL
 Edit `argocd-demo-config/applications/app.yaml`:
@@ -194,7 +194,7 @@ syncPolicy:
     selfHeal: true
 ```
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 **Q: Can't connect to ArgoCD UI**
 ```bash
@@ -226,7 +226,7 @@ kubectl get pods -n argocd-demo
 # in k8s/frontend.yaml and backend.yaml
 ```
 
-## 🧹 Cleanup
+##  Cleanup
 
 ```bash
 # Remove all demo resources
@@ -237,20 +237,20 @@ kubectl delete app -n argocd argocd-demo-app
 kubectl delete ns argocd-demo
 ```
 
-## 💡 Sales & Presentation Tips
+##  Sales & Presentation Tips
 
 **Open with:** "Let me show you how to reduce deployment errors and cut deployment time in half."
 
 **Key Value Props:**
-- ✅ Git is your deployment documentation
-- ✅ Zero-downtime rollbacks
-- ✅ Prevent configuration drift
-- ✅ Audit every change
-- ✅ Works across any number of clusters
-- ✅ Developers use familiar Git workflows
+-  Git is your deployment documentation
+-  Zero-downtime rollbacks
+-  Prevent configuration drift
+-  Audit every change
+-  Works across any number of clusters
+-  Developers use familiar Git workflows
 
 **Close with:** "This reduces deployment risk, improves compliance, and enables faster innovation. Questions?"
 
 ---
 
-Happy demoing! 🎉
+Happy demoing! 

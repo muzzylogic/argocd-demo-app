@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>🎯 ArgoCD Demo Application</h1>
+        <h1> ArgoCD Demo Application</h1>
         <p>GitOps Continuous Deployment Example</p>
       </header>
 
@@ -56,12 +56,12 @@ function App() {
         <section className="card">
           <h2>Demo Features</h2>
           <ul>
-            <li>✅ Automated Deployments from Git</li>
-            <li>✅ Multi-Environment Support</li>
-            <li>✅ Real-time Synchronization</li>
-            <li>✅ Rollback Capabilities</li>
-            <li>✅ Progressive Delivery</li>
-            <li>✅ Application Health Monitoring</li>
+            <li> Automated Deployments from Git</li>
+            <li> Multi-Environment Support</li>
+            <li> Real-time Synchronization</li>
+            <li> Rollback Capabilities</li>
+            <li> Progressive Delivery</li>
+            <li> Application Health Monitoring</li>
           </ul>
         </section>
 

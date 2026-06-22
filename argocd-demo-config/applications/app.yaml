@@ -71,8 +71,7 @@ spec:
     automated:
       prune: true        # Delete resources removed from git
       selfHeal: true     # Reconcile if cluster state drifts
-      allow:
-        empty: false     # Prevent deleting all resources
+      allowEmpty: false  # Prevent deleting all resources
 
     retry:
       limit: 5

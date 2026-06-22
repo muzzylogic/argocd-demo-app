@@ -18,21 +18,21 @@ PROJECT_ROOT="$(dirname "$DIR")"
 # For Minikube, we can use the Docker daemon inside Minikube
 echo "Setting up Docker environment for Minikube..."
 eval $(minikube docker-env)
-echo -e "${GREEN}✓ Docker environment configured${NC}\n"
+echo -e "${GREEN} Docker environment configured${NC}\n"
 
 # Build backend
 echo -e "${BLUE}Building backend image...${NC}"
 docker build -f "$PROJECT_ROOT/argocd-demo-app/docker/backend.Dockerfile" \
   -t argocd-demo-backend:1.0.0 \
   "$PROJECT_ROOT/argocd-demo-app"
-echo -e "${GREEN}✓ Backend image built${NC}\n"
+echo -e "${GREEN} Backend image built${NC}\n"
 
 # Build frontend
 echo -e "${BLUE}Building frontend image...${NC}"
 docker build -f "$PROJECT_ROOT/argocd-demo-app/docker/frontend.Dockerfile" \
   -t argocd-demo-frontend:1.0.0 \
   "$PROJECT_ROOT/argocd-demo-app"
-echo -e "${GREEN}✓ Frontend image built${NC}\n"
+echo -e "${GREEN} Frontend image built${NC}\n"
 
 # List images
 echo -e "${BLUE}Built images:${NC}"

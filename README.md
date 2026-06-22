@@ -48,26 +48,26 @@ Login to ArgoCD:
 
 ```
 /home/vitas/dev/airflow_demo/
-├── argocd-demo-app/          # Sample application repo
-│   ├── backend/               # Node.js express server
-│   ├── frontend/              # React application
-│   ├── docker/                # Dockerfiles
-│   ├── k8s/                   # Kubernetes manifests
-│   └── README.md
-│
-├── argocd-demo-config/        # ArgoCD configuration repo
-│   ├── argocd-config/         # ArgoCD setup
-│   ├── applications/          # Application CRDs
-│   ├── environments/          # Env-specific configs
-│   └── README.md
-│
-├── scripts/
-│   ├── setup.sh               # Initial setup
-│   ├── demo.sh                # Interactive demo
-│   ├── build-images.sh        # Build Docker images
-│   └── cleanup.sh             # Cleanup resources
-│
-└── README.md                  # This file
+ argocd-demo-app/          # Sample application repo
+    backend/               # Node.js express server
+    frontend/              # React application
+    docker/                # Dockerfiles
+    k8s/                   # Kubernetes manifests
+    README.md
+
+ argocd-demo-config/        # ArgoCD configuration repo
+    argocd-config/         # ArgoCD setup
+    applications/          # Application CRDs
+    environments/          # Env-specific configs
+    README.md
+
+ scripts/
+    setup.sh               # Initial setup
+    demo.sh                # Interactive demo
+    build-images.sh        # Build Docker images
+    cleanup.sh             # Cleanup resources
+
+ README.md                  # This file
 ```
 
 ## Key Features to Demonstrate
@@ -175,12 +175,12 @@ kubectl get app -n argocd
 
 # Same source repo, different overlays
 argocd-demo-app/
-├── k8s/
-│   ├── base/
-│   └── overlays/
-│       ├── dev/
-│       ├── staging/
-│       └── prod/
+ k8s/
+    base/
+    overlays/
+        dev/
+        staging/
+        prod/
 ```
 
 **Demo talking points:**
@@ -303,14 +303,14 @@ Remove all demo resources:
 
 ## Sales Talking Points
 
-✅ **"Single Source of Truth"** - Git is the authoritative configuration source  
-✅ **"Audit Trail"** - Every change tracked in Git commits  
-✅ **"Instant Rollback"** - Seconds, not hours  
-✅ **"Multi-Cluster Ready"** - Manage multiple Kubernetes clusters  
-✅ **"Developer Friendly"** - Simple Git workflows, no kubectl needed  
-✅ **"Enterprise Ready"** - RBAC, SSO, audit logging  
-✅ **"Open Source"** - Community-driven, no vendor lock-in  
-✅ **"Cloud Native"** - Works with any Kubernetes distribution  
+ **"Single Source of Truth"** - Git is the authoritative configuration source  
+ **"Audit Trail"** - Every change tracked in Git commits  
+ **"Instant Rollback"** - Seconds, not hours  
+ **"Multi-Cluster Ready"** - Manage multiple Kubernetes clusters  
+ **"Developer Friendly"** - Simple Git workflows, no kubectl needed  
+ **"Enterprise Ready"** - RBAC, SSO, audit logging  
+ **"Open Source"** - Community-driven, no vendor lock-in  
+ **"Cloud Native"** - Works with any Kubernetes distribution  
 
 ---
 

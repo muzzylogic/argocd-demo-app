@@ -21,11 +21,11 @@ echo "Minikube IP: $MINIKUBE_IP"
 
 # Check if already in hosts
 if grep -q "demo.argocd" /etc/hosts; then
-    echo "✓ demo.argocd already in /etc/hosts"
+    echo " demo.argocd already in /etc/hosts"
 else
     echo "Adding demo.argocd to /etc/hosts (requires sudo)..."
     echo "$MINIKUBE_IP demo.argocd" | sudo tee -a /etc/hosts > /dev/null
-    echo -e "${GREEN}✓ Added to /etc/hosts${NC}"
+    echo -e "${GREEN} Added to /etc/hosts${NC}"
 fi
 
 echo ""
@@ -36,10 +36,10 @@ echo ""
 echo -e "${YELLOW}Step 2: Enabling Minikube Ingress addon${NC}"
 
 if minikube addons list | grep -q "ingress.*enabled"; then
-    echo "✓ Ingress addon already enabled"
+    echo " Ingress addon already enabled"
 else
     minikube addons enable ingress
-    echo -e "${GREEN}✓ Ingress addon enabled${NC}"
+    echo -e "${GREEN} Ingress addon enabled${NC}"
 fi
 
 echo ""
@@ -94,7 +94,7 @@ spec:
               number: 80
 INGRESS_EOF
 
-echo -e "${GREEN}✓ Ingress resources created${NC}"
+echo -e "${GREEN} Ingress resources created${NC}"
 
 echo ""
 
@@ -107,11 +107,11 @@ echo ""
 echo -e "${BLUE}URLs are now available:${NC}"
 echo ""
 echo "  ArgoCD UI:"
-echo "  🌐 http://demo.argocd"
-echo "  🌐 https://demo.argocd"
+echo "   http://demo.argocd"
+echo "   https://demo.argocd"
 echo ""
 echo "  Sample App:"
-echo "  🌐 http://demo.argocd/app"
+echo "   http://demo.argocd/app"
 echo ""
 
 echo -e "${YELLOW}Note: You may need to accept self-signed certificate for HTTPS${NC}"

@@ -23,8 +23,7 @@ spec:
     automated:
       prune: false        # Manual pruning for safety
       selfHeal: false
-      allow:
-        empty: false
+      allowEmpty: false
 
   # Sync waves for ordered deployments
   # Uncomment when k8s/canary includes sync wave annotations:

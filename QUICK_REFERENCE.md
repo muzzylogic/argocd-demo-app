@@ -1,11 +1,11 @@
 # ArgoCD Demo - Quick Reference Card
 
-## 📍 Location
+##  Location
 ```
 /home/vitas/dev/airflow_demo
 ```
 
-## 🚀 Quick Commands
+##  Quick Commands
 
 ### Initial Setup (One Time)
 ```bash
@@ -59,7 +59,7 @@ kubectl logs -n argocd-demo -l app=frontend
 kubectl logs -n argocd -l app=argocd-application-controller
 ```
 
-## 📊 12 Features to Demo
+##  12 Features to Demo
 
 1. **Application Status** → Show UI dashboard
 2. **Git vs Live State** → Run `argocd app diff`
@@ -74,7 +74,7 @@ kubectl logs -n argocd -l app=argocd-application-controller
 11. **Sync Waves** → Show annotations in YAML
 12. **Notifications** → Show config in config.yaml
 
-## 📁 Key Files
+##  Key Files
 
 | File | Purpose |
 |------|---------|
@@ -88,11 +88,11 @@ kubectl logs -n argocd -l app=argocd-application-controller
 | `scripts/setup.sh` | Setup automation |
 | `scripts/demo.sh` | Interactive demo |
 
-## 🎤 Elevator Pitch
+##  Elevator Pitch
 
 > "ArgoCD is Git-based continuous deployment. It treats Git as the source of truth and keeps your cluster in sync automatically. One-click rollback, zero-downtime updates, complete audit trail. All from Git."
 
-## 🎯 Demo Flow (15 min)
+##  Demo Flow (15 min)
 
 1. **Show Status** (2 min) - ArgoCD dashboard
 2. **Make Change** (2 min) - Edit git, commit, push
@@ -101,16 +101,16 @@ kubectl logs -n argocd -l app=argocd-application-controller
 5. **Show Drift** (2 min) - Manual change, auto-fix
 6. **Q&A** (5 min+)
 
-## 💰 Business Benefits
+##  Business Benefits
 
-- ✅ Faster deployments (minutes vs hours)
-- ✅ Safer rollback (seconds vs days)
-- ✅ Audit trail (compliance)
-- ✅ Prevents drift (configuration management)
-- ✅ Reduces ops toil (automation)
-- ✅ Developer self-service (no ops team gating)
+-  Faster deployments (minutes vs hours)
+-  Safer rollback (seconds vs days)
+-  Audit trail (compliance)
+-  Prevents drift (configuration management)
+-  Reduces ops toil (automation)
+-  Developer self-service (no ops team gating)
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 | Problem | Solution |
 |---------|----------|
@@ -120,7 +120,7 @@ kubectl logs -n argocd -l app=argocd-application-controller
 | App won't sync | `argocd app sync --force` or check logs |
 | Port-forward fails | Kill old process: `pkill port-forward` |
 
-## 📞 Next Steps After Demo
+##  Next Steps After Demo
 
 1. Answer technical questions
 2. Discuss their use case
@@ -129,7 +129,7 @@ kubectl logs -n argocd -l app=argocd-application-controller
 5. Schedule technical deep-dive
 6. Discuss ArgoCD Pro/Enterprise features
 
-## 🧹 Cleanup
+##  Cleanup
 
 ```bash
 ./scripts/cleanup.sh             # Remove demo resources

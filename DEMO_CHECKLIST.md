@@ -2,7 +2,7 @@
 
 Use this checklist during your demo to ensure you cover all key features.
 
-## Pre-Demo Verification ✓
+## Pre-Demo Verification 
 
 - [ ] Minikube is running (`minikube status`)
 - [ ] ArgoCD is installed (`kubectl get pods -n argocd`)
@@ -318,4 +318,4 @@ Adjust feature coverage based on available time.
 - Practice transitions between demos
 - Keep git commits ready to push for smooth transitions
 
-Good luck! 🎉
+Good luck! 
