@@ -38,6 +38,36 @@ function App() {
 
       <main className="container">
         <section className="card">
+          <h2>Basic HTML Example</h2>
+          <article>
+            <h3>Welcome</h3>
+            <p>This is a simple HTML section rendered by the frontend app.</p>
+            <p>
+              Visit <a href="https://argo-cd.readthedocs.io/" target="_blank" rel="noreferrer">ArgoCD Docs</a>
+              {' '}for more details.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Frontend</td>
+                  <td>Running</td>
+                </tr>
+                <tr>
+                  <td>Backend</td>
+                  <td>{error ? 'Issue detected' : 'Healthy'}</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+
+        <section className="card">
           <h2>Backend Status</h2>
           {loading && <p>Loading...</p>}
           {error && <p className="error">Error: {error}</p>}

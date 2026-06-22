@@ -1,49 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-demo-app
+  name: argocd-demo-app-manual
   namespace: argocd
 spec:
-  # ArgoCD project
   project: default
 
-  # Source repository configuration
   source:
-    repoURL: https://github.com/your-username/argocd-demo-app
+    repoURL: https://github.com/muzzylogic/argocd-demo-app
     targetRevision: main
-    path: k8s
+    path: argocd-demo-app/k8s-manual
 
-  # Destination cluster and namespace
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd-demo
+    namespace: argocd-demo-manual
 
-  # Sync policy - MANUAL SYNC for initial demo
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    
-    # Uncomment for AUTO SYNC (feature demo)
-    # automated:
-    #   prune: true
-    #   selfHeal: true
-    #   allow:
-    #     empty: false
-    
-    # Retry configuration
+
     retry:
       limit: 5
       backoff:
         duration: 5s
         factor: 2
         maxDuration: 3m
-
-  # Ignore differences (optional)
-  # ignoreDifferences:
-  # - group: apps
-  #   kind: Deployment
-  #   jsonPointers:
-  #   - /spec/replicas
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -55,13 +36,13 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/your-username/argocd-demo-app
+    repoURL: https://github.com/muzzylogic/argocd-demo-app
     targetRevision: main
-    path: k8s
+    path: argocd-demo-app/k8s
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd-demo-auto
+    namespace: argocd-demo
 
   syncPolicy:
     syncOptions:
