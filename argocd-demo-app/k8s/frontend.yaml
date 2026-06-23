@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: argocd-demo
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
