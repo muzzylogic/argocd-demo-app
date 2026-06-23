@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="ArgoCD Demo Application" />
+    <script>
+      (function () {
+        var p = window.location.pathname;
+        if ((p === '/app' || p === '/manual') && !p.endsWith('/')) {
+          window.location.replace(p + '/' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
     <title>ArgoCD Demo App</title>
   </head>
   <body>

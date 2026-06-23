@@ -22,7 +22,7 @@ Configure local domain routing:
 
 Then access:
 - `http://demo.argocd`
-- `http://demo.argocd/app`
+- `http://demo.argocd/app/`
 
 ## 3) Git trigger options
 

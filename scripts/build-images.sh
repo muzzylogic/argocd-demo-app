@@ -11,6 +11,27 @@ NC='\033[0m'
 
 echo -e "${BLUE}Building Docker images for ArgoCD demo...${NC}\n"
 
+# Preflight: Docker daemon access is required for both minikube and image builds.
+if ! docker info >/dev/null 2>&1; then
+  echo -e "${YELLOW}Docker daemon is not accessible for user '$USER'.${NC}"
+  echo "This usually means your user is not in the 'docker' group or Docker is not running."
+  echo ""
+  echo "Fix (Linux):"
+  echo "  sudo usermod -aG docker $USER"
+  echo "  newgrp docker"
+  echo ""
+  echo "Then ensure minikube is running and re-run this script."
+  exit 1
+fi
+
+# Preflight: require an active minikube profile since we build into its Docker daemon.
+if ! minikube status >/dev/null 2>&1; then
+  echo -e "${YELLOW}Minikube is not running or not accessible.${NC}"
+  echo "Start it and re-run this script:"
+  echo "  minikube start"
+  exit 1
+fi
+
 # Get the directory of the script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$(dirname "$DIR")"

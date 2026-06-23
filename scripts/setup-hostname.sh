@@ -75,10 +75,43 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-app
+  name: backend-api
+  namespace: argocd-demo
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.argocd
+    http:
+      paths:
+      - path: /api/message
+        pathType: Exact
+        backend:
+          service:
+            name: backend-public
+            port:
+              number: 3001
+      - path: /api/status
+        pathType: Exact
+        backend:
+          service:
+            name: backend-public
+            port:
+              number: 3001
+      - path: /api/process
+        pathType: Exact
+        backend:
+          service:
+            name: backend-public
+            port:
+              number: 3001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-app-redirect
   namespace: argocd-demo
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/permanent-redirect: /app/
 spec:
   ingressClassName: nginx
   rules:
@@ -86,7 +119,72 @@ spec:
     http:
       paths:
       - path: /app
-        pathType: Prefix
+        pathType: Exact
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-app
+  namespace: argocd-demo
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.argocd
+    http:
+      paths:
+      - path: /app/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-manual-redirect
+  namespace: argocd-demo-manual
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: /manual/
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.argocd
+    http:
+      paths:
+      - path: /manual
+        pathType: Exact
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-manual
+  namespace: argocd-demo-manual
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.argocd
+    http:
+      paths:
+      - path: /manual/(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: frontend
@@ -111,7 +209,8 @@ echo "   http://demo.argocd"
 echo "   https://demo.argocd"
 echo ""
 echo "  Sample App:"
-echo "   http://demo.argocd/app"
+echo "   http://demo.argocd/app/"
+echo "   http://demo.argocd/manual/"
 echo ""
 
 echo -e "${YELLOW}Note: You may need to accept self-signed certificate for HTTPS${NC}"
@@ -126,6 +225,8 @@ echo ""
 kubectl get ingress -n argocd
 echo ""
 kubectl get ingress -n argocd-demo
+echo ""
+kubectl get ingress -n argocd-demo-manual
 echo ""
 
 echo -e "${GREEN}Setup complete!${NC}"

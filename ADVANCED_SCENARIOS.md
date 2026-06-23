@@ -232,7 +232,7 @@ ArgoCD UI:
   https://demo.argocd
 
 Sample App:
-  http://demo.argocd/app
+  http://demo.argocd/app/
 ```
 
 ### Manual Setup (If script fails)
@@ -420,7 +420,7 @@ kubectl apply -f argocd-demo-config/applications/app.yaml
 
 # 5. Verify everything works
 kubectl get pods -n argocd-demo
-curl http://demo.argocd/app
+curl http://demo.argocd/app/
 ```
 
 ### Demo Flow (20-30 min)
@@ -429,7 +429,7 @@ curl http://demo.argocd/app
 ```bash
 # 1. Open both:
 #    - https://demo.argocd (ArgoCD)
-#    - http://demo.argocd/app (Sample app)
+#    - http://demo.argocd/app/ (Sample app)
 #    - git terminal
 
 # 2. Edit manifest

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend for ArgoCD demo",
   "private": true,
+  "homepage": ".",
   "proxy": "http://backend:3001",
   "dependencies": {
     "react": "^18.2.0",

@@ -135,7 +135,7 @@ WORKDIR /app
 COPY backend/package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copy BROKEN application code
 COPY backend/server-broken.js server.js
@@ -223,7 +223,7 @@ WORKDIR /app
 COPY backend/package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copy DEGRADED application code
 COPY backend/server-degraded.js server.js
