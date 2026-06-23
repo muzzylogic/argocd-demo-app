@@ -34,6 +34,8 @@ spec:
       containers:
       - name: backend
         image: argocd-demo-backend:1.0.0
+        # broken argocd-demo-backend:1.0.1
+        # degraded 1.0.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3001
